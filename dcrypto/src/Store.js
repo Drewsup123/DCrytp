@@ -1,15 +1,22 @@
 import React from 'react'
-
 export const Store = React.createContext(); //creates context object
 
 const initialState = {
-    
+    loggedIn : true,
+    selected:"dashboard",
+    favorites:[],
+    username:"",
+    coins:[],
 }
 
 function reducer(state, action) {
     switch(action.type){
         default:
             return state;
+        case('Change_Selected'):
+            return {...state, selected:action.payload}
+        case('COIN_LIST_UPDATE'):
+            return {...state, coins: action.payload}
     }
 }
 

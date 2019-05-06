@@ -1,26 +1,53 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from '../img/logo.png'
+import logo from '../img/logo.png';
+import {Store} from '../Store';
+import Link from './StyledLink';
 
 const Appbar = styled.div`
-    padding:20px 5%;
     display:flex;
     justify-content:space-between;
     align-items:center;
     margin-bottom:40px;
+    width:100%;
 `;
 
 const Logo = styled.img`
     height:40px;
-    padding-right:60%;
 `;
 
 export default function AppBar(){
+    const {state, dispatch} = React.useContext(Store);
+
+    const changeSelected = name => {
+        dispatch({type:'Change_Selected', payload:name});
+    }
     return(
         <Appbar>
-            <Logo src={logo} alt="logo" />
-            <div className="app-bar-btn">Dashboard</div>
-            <div className="app-bar-btn">Settings</div>
+
+            <Link to="/">
+                <Logo src={logo} alt="logo" />
+            </Link>
+            <div style={{width:"70%"}}/>
+
+            <Link to="/">
+                <div 
+                    onClick={()=>changeSelected("dashboard")}
+                    className={`app-bar-btn ${state.selected === "dashboard" ? "selected" : ""}`}
+                >
+                Dashboard
+                </div>
+            </Link>
+
+            <Link to="settings">
+                <div 
+                    onClick={(e)=>changeSelected("settings")}
+                    className={`app-bar-btn ${state.selected === "settings" ? "selected" : ""}`}
+                >
+                Settings
+                </div>
+            </Link>
+
         </Appbar>
     )
 }

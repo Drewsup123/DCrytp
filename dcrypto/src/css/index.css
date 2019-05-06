@@ -9,19 +9,28 @@ body {
 .App{
   max-width:100%;
   width:100%;
+  box-sizing: border-box;
+  padding:30px;
 }
+
 
 /* APP BAR */
 .app-bar-btn{
   cursor: pointer;
   padding:5px;
   border-radius:5px;
+  color:#363636;
 }
+
+.selected{
+  text-decoration: underline;
+}
+
 .app-bar-btn:hover{
   transition:0.3s;
-  color:blue;
+  color:#FFF;
   border:1px solid gray;
-  background:lightgray;
+  background:#209CEE;
 }
 
 @keyframes App-logo-spin {
