@@ -6,6 +6,24 @@ body {
   font-family: 'Do Hyeon', sans-serif;
 }
 
+.App{
+  max-width:100%;
+  width:100%;
+}
+
+/* APP BAR */
+.app-bar-btn{
+  cursor: pointer;
+  padding:5px;
+  border-radius:5px;
+}
+.app-bar-btn:hover{
+  transition:0.3s;
+  color:blue;
+  border:1px solid gray;
+  background:lightgray;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
