@@ -1,7 +1,7 @@
-import cc from 'cryptocompare';
 import React from 'react';
 import {Store} from './Store';
 import {Route} from 'react-router-dom';
+import cc from 'cryptocompare';
 
 //Component Imports
 import Main from './Main';
@@ -15,13 +15,12 @@ function App() {
   const {loggedIn} = state;
 
   const fetchCoins = async() => {
-    let coinList = (await cc.coinList());
-    coinList = coinList.Data;
-    dispatch({type:'COIN_LIST_UPDATE', payload:coinList});
+    let coinList = await cc.coinList();
+    const final = Object.keys(coinList.Data).map(coin => coinList.Data[coin]);
+    dispatch({type:'COIN_LIST_UPDATE', payload: final});
   }
 
   React.useEffect(()=>{
-    console.log("use effect")
     fetchCoins();
   },[])
 
